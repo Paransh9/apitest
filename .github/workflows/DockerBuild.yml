@@ -1,0 +1,14 @@
+name: Docker image build
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v1
+      - name: Build & Push Image
+        run: |
+          echo ${{ secrets.DOCKERTOKEN }} | docker login -u "<paransh>" --Paransh@123-stdin
+          docker build -t <paransh>/<main>:latest .
+          docker push <paransh>/<main>:latest
